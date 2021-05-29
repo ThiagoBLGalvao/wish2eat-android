@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/red_secondary">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/accountProfilePhoto"
+        android:layout_width="@dimen/image_straight_2"
+        android:layout_height="@dimen/image_straight_2"
+        android:layout_marginTop="@dimen/straight_10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:src = "@drawable/ic_logo"/>
+
+    <View
+        android:id="@+id/dividerLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/straight_7"
+        android:layout_marginStart="@dimen/straight_6"
+        android:layout_marginEnd="@dimen/straight_6"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/accountProfilePhoto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/accountNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/straight_7"
+        android:layout_marginStart="@dimen/straight_7"
+        android:layout_marginEnd="@dimen/straight_7"
+        android:textColor="@color/white"
+        android:textSize="@dimen/straight_string_3"
+        android:enabled="false"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/dividerLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Name"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/accountEmailInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/straight_6"
+        android:layout_marginStart="@dimen/straight_7"
+        android:layout_marginEnd="@dimen/straight_7"
+        android:textColor="@color/white"
+        android:textSize="@dimen/straight_string_3"
+        android:enabled="false"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/accountNameInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Email"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/accountEditButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_account"
+        android:textColor="@color/white"
+        android:textSize="@dimen/straight_string_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

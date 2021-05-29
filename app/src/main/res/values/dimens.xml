@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="straight_1">2dp</dimen>
+    <dimen name="straight_2">4dp</dimen>
+    <dimen name="straight_3">6dp</dimen>
+    <dimen name="straight_4">8dp</dimen>
+    <dimen name="straight_5">10dp</dimen>
+    <dimen name="straight_6">12dp</dimen>
+    <dimen name="straight_7">24dp</dimen>
+    <dimen name="straight_8">36dp</dimen>
+    <dimen name="straight_9">48dp</dimen>
+    <dimen name="straight_10">60dp</dimen>
+    <dimen name="straight_11">120dp</dimen>
+    <dimen name="straight_12">56dp</dimen>
+    <dimen name="straight_13">60dp</dimen>
+    <dimen name="image_straight_1">150dp</dimen>
+    <dimen name="image_straight_2">200dp</dimen>
+    <dimen name="straight_string_1">20sp</dimen>
+    <dimen name="straight_string_2">23sp</dimen>
+    <dimen name="straight_string_3">26sp</dimen>
+    <dimen name="straight_string_4">29sp</dimen>
+    <dimen name="straight_string_5">13sp</dimen>
+</resources>
