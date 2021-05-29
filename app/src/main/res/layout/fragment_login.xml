@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/red_primary">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logoImageLoginFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/straight_10"
+        android:src="@drawable/ic_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/labelEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/straight_7"
+        android:layout_marginBottom="@dimen/straight_2"
+        android:text="@string/e_mail"
+        android:textColor="@color/white"
+        android:textSize="@dimen/straight_string_2"
+        app:layout_constraintBottom_toTopOf="@+id/emailLoginInput"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/emailLoginInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/straight_7"
+        android:layout_marginTop="@dimen/straight_10"
+        android:layout_marginEnd="@dimen/straight_7"
+        android:background="@drawable/input_background_shape"
+        android:padding="@dimen/straight_4"
+        android:textSize="@dimen/straight_string_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImageLoginFragment" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/labelPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/straight_7"
+        android:layout_marginBottom="@dimen/straight_2"
+        android:text="@string/password"
+        android:textColor="@color/white"
+        android:textSize="@dimen/straight_string_2"
+        app:layout_constraintBottom_toTopOf="@id/passwordLoginInput"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/passwordLoginInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/straight_7"
+        android:layout_marginTop="@dimen/straight_9"
+        android:layout_marginEnd="@dimen/straight_7"
+        android:background="@drawable/input_background_shape"
+        android:padding="@dimen/straight_4"
+        android:textSize="@dimen/straight_string_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailLoginInput" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonLoginFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/straight_7"
+        android:layout_marginTop="@dimen/straight_7"
+        android:layout_marginEnd="@dimen/straight_7"
+        android:padding="@dimen/straight_5"
+        android:background="@drawable/button_background_shape_red"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/straight_string_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/passwordLoginInput"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLoginInput" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonCreateAccountLoginFragment"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/straight_6"
+        android:text="@string/new_user_create_account"
+        android:textColor="@color/white"
+        android:textSize="@dimen/straight_string_5"
+        android:background="@color/red_primary"
+        app:layout_constraintTop_toBottomOf="@id/buttonLoginFragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

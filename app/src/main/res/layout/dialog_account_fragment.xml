@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/red_primary">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/accountImagePhoto"
+            android:layout_width="@dimen/image_straight_1"
+            android:layout_height="@dimen/image_straight_1"
+            android:layout_marginTop="@dimen/straight_12"
+            android:src="@drawable/ic_user_straight_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/dividerLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/straight_7"
+            android:layout_marginTop="@dimen/straight_7"
+            android:layout_marginEnd="@dimen/straight_7"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/accountImagePhoto" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/myAccountButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/straight_7"
+            android:text="@string/my_account"
+            android:textSize="@dimen/straight_string_1"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dividerLine" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/myFavoriteListButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/straight_5"
+            android:text="@string/my_favorite_list"
+            android:textSize="@dimen/straight_string_1"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myAccountButton" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/logoutButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/straight_5"
+            android:text="@string/log_out"
+            android:textSize="@dimen/straight_string_1"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myFavoriteListButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
