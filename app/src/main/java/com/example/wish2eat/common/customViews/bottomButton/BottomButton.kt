@@ -1,4 +1,4 @@
-package com.example.wish2eat.common.customViews.BottomButton
+package com.example.wish2eat.common.customViews.bottomButton
 
 import android.content.Context
 import android.util.AttributeSet

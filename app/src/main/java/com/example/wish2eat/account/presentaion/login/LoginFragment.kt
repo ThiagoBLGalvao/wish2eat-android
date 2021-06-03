@@ -2,6 +2,7 @@ package com.example.wish2eat.account.presentaion.login
 
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
 import com.example.wish2eat.R
 import com.example.wish2eat.account.presentaion.register.RegisterFragment
 import com.example.wish2eat.common.BaseFragment
@@ -33,6 +34,7 @@ class LoginFragment: BaseFragment(), LoginContract.View {
 
         activity?.supportFragmentManager
             ?.beginTransaction()
+            ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
             ?.replace(R.id.container_fragment, fragment)
             ?.addToBackStack("fragment_register")
             ?.commit()
@@ -44,7 +46,7 @@ class LoginFragment: BaseFragment(), LoginContract.View {
         showToast(getString(messageId))
     }
 
-    private fun showToast(message: String){
+    override fun showToast(message: String){
         Toast.makeText(requireContext(), message,Toast.LENGTH_SHORT).show()
     }
 }

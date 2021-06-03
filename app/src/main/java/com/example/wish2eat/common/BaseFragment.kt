@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.wish2eat.common.customViews.BasicToolbar.BasicToolbarComponentContract
-import com.example.wish2eat.common.customViews.DialogUserMenu.DialogUserMenu
+import com.example.wish2eat.common.customViews.basicToolbar.BasicToolbarComponentContract
+import com.example.wish2eat.common.customViews.dialogUserMenu.DialogUserMenu
+import com.example.wish2eat.common.customViews.loader.LoaderContract
 
 abstract class BaseFragment: Fragment(), NavigationDialog {
     protected abstract val layoutResource: Int
@@ -17,6 +18,9 @@ abstract class BaseFragment: Fragment(), NavigationDialog {
     val basicToolbarComponent: BasicToolbarComponentContract
         get() = (activity as BaseActivity).basicToolbarComponent
 
+    val basicLoader: LoaderContract
+        get() = (activity as BaseActivity).basicLoader
+
     abstract fun initFragment(rootView: View)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -24,7 +28,7 @@ abstract class BaseFragment: Fragment(), NavigationDialog {
 
         initFragment(view)
 
-        implementationToolbar(baseActivity.basicToolbarComponent)
+        implementationToolbar()
     }
 
     override fun onCreateView(
@@ -53,8 +57,8 @@ abstract class BaseFragment: Fragment(), NavigationDialog {
 //        TODO("Not yet implemented")
     }
 
-    protected fun implementationToolbar(basicToolbarComponent: BasicToolbarComponentContract){
-        basicToolbarComponent.setAccountButtonBehavior(View.OnClickListener { openAccountDialog() })
+    protected fun implementationToolbar(){
+        basicToolbarComponent.setAccountButtonBehavior { openAccountDialog() }
     }
 
     private fun openAccountDialog(){

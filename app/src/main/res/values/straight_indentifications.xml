@@ -2,4 +2,5 @@
 <resources>
     <item name="basic_toolbar" type="id"/>
     <item name="container_fragment" type="id"/>
+    <item name="basic_loader" type="id"/>
 </resources>

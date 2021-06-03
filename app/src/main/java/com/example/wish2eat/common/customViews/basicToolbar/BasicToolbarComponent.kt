@@ -1,4 +1,4 @@
-package com.example.wish2eat.common.customViews.BasicToolbar
+package com.example.wish2eat.common.customViews.basicToolbar
 
 import android.view.View
 import com.example.wish2eat.R

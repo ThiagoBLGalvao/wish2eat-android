@@ -9,20 +9,23 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class UserVO(
-    val id: Long,
+    val id: Long = 0L,
     @SerializedName("nome")
     val name: String,
     val email: String,
-    val favoriteProductsList: List<ProductVO>,
-    val favoriteStoreList: List<StoreVO>
-): Parcelable
+    val password: String? = "",
+    @SerializedName("addProducts")
+    val favoriteProductsList: List<ProductVO>? = listOf(),
+    @SerializedName("addStores")
+    val favoriteStoreList: List<StoreVO>? = listOf()
+) : Parcelable
 
 fun UserVO.toModel() = UserModel(
     id,
     name,
     email,
-    favoriteFoods = favoriteProductsList.map{ productVO -> productVO.toModel() },
-    favoriteRestaurant = favoriteStoreList.map { storeVo -> storeVo.toModel() }
+    favoriteFoods = favoriteProductsList?.map { productVO -> productVO.toModel() },
+    favoriteRestaurant = favoriteStoreList?.map { storeVo -> storeVo.toModel() }
 )
 
 @Parcelize
@@ -33,7 +36,7 @@ data class ProductVO(
     val storeId: Long,
     @SerializedName("value")
     val productValue: Long
-): Parcelable
+) : Parcelable
 
 fun ProductVO.toModel() = ProductModel(
     id,
@@ -44,18 +47,23 @@ fun ProductVO.toModel() = ProductModel(
 )
 
 @Parcelize
+data class ListOfStoresVO(
+    val listStores: List<StoreVO>
+): Parcelable
+
+@Parcelize
 data class StoreVO(
     val id: Long,
     val name: String,
     val cep: String,
     val number: String,
     val productsList: List<ProductVO>
-): Parcelable
+) : Parcelable
 
 fun StoreVO.toModel() = StoreModel(
     id,
     name,
     cep,
     number,
-    productsList = productsList.map{ productVO -> productVO.toModel() }
+    productsList = productsList.map { productVO -> productVO.toModel() }
 )

@@ -18,4 +18,5 @@
     <string name="edit_account">Edit Account</string>
     <string name="account_not_exist">This Account doesn\'t exist</string>
     <string name="add_new_store">Add new Store</string>
+    <string name="loading">Loading…</string>
 </resources>

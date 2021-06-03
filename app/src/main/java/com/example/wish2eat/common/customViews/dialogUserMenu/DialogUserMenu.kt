@@ -1,4 +1,4 @@
-package com.example.wish2eat.common.customViews.DialogUserMenu
+package com.example.wish2eat.common.customViews.dialogUserMenu
 
 import android.os.Bundle
 import android.view.LayoutInflater

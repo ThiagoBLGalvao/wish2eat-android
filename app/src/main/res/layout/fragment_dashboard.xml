@@ -13,7 +13,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/customBottomButton"/>
-        <com.example.wish2eat.common.customViews.BottomButton.BottomButton
+        <com.example.wish2eat.common.customViews.bottomButton.BottomButton
             android:id="@+id/customBottomButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

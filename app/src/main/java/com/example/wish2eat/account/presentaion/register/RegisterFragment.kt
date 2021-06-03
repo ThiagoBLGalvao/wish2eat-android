@@ -5,6 +5,7 @@ import android.widget.Toast
 import com.example.wish2eat.R
 import com.example.wish2eat.common.core.model.UserModel
 import com.example.wish2eat.common.BaseFragment
+import com.example.wish2eat.common.core.vo.UserVO
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import org.koin.android.ext.android.inject
@@ -15,11 +16,17 @@ class RegisterFragment : BaseFragment(), RegisterContract.View {
 
     private val presenter: RegisterContract.Presenter by inject { parametersOf(this) }
 
-    companion object{ fun newInstance() = RegisterFragment() }
+    companion object {
+        fun newInstance() = RegisterFragment()
+    }
 
     override fun onResume() {
         super.onResume()
-        buttonCreateAccountCard?.setOnClickListener { presenter.onRegisterAccountButtonClicked(createUser()) }
+        buttonCreateAccountCard?.setOnClickListener {
+            presenter.onRegisterAccountButtonClicked(
+                createUser()
+            )
+        }
     }
 
     override fun initFragment(rootView: View) {}
@@ -32,11 +39,17 @@ class RegisterFragment : BaseFragment(), RegisterContract.View {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun createUser(): UserModel {
-        val name: String  = nameInputCard?.text.toString()
-        val email: String = emailInputCard?.text.toString()
-        val password = passwordInputCard?.text.toString()
-
-        return UserModel(name = name, email = email, password = password)
+    override fun showLoader() {
+        basicLoader.changeVisibility(true)
     }
+
+    override fun hideLoader() {
+        basicLoader.changeVisibility(false)
+    }
+
+    private fun createUser() = UserVO(
+        name = nameInputCard.text.toString(),
+        email = emailInputCard.text.toString(),
+        password = passwordInputCard.text.toString()
+    )
 }
