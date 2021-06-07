@@ -17,6 +17,8 @@ class RegisterFragment : BaseFragment(), RegisterContract.View {
     private val presenter: RegisterContract.Presenter by inject { parametersOf(this) }
 
     companion object {
+        const val NAME = "Register_Fragment"
+
         fun newInstance() = RegisterFragment()
     }
 

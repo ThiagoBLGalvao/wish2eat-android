@@ -7,7 +7,7 @@ import com.example.wish2eat.common.core.webApi.WebRepositoryContract
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-class LoginPresenter(
+class  LoginPresenter(
     private val view: LoginContract.View?,
     private val repository: WebRepositoryContract,
     private val dispose: CompositeDisposable = CompositeDisposable()

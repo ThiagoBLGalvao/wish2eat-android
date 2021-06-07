@@ -11,7 +11,7 @@ object SplashModules {
         single<WebRepositoryContract> {
             WebRepository(
                 NetworkUtils
-                    .getWishToEatApi("https://wish2eat-dev.herokuapp.com:443/")
+                    .getWishToEatApi("https://wish2eat-dev.herokuapp.com/")
                     .create(Wish2EatApi::class.java)
             )
         }

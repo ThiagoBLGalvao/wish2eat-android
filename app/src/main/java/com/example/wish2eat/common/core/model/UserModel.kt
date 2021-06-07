@@ -1,5 +1,7 @@
 package com.example.wish2eat.common.core.model
 
+import com.example.wish2eat.common.core.enum.StoreType
+
 data class UserModel(
     val id: Long = 0,
     val name: String,
@@ -12,6 +14,7 @@ data class UserModel(
 
 data class StoreModel(
     val id: Long,
+    val storeType: StoreType,
     val name: String,
     val cep: String,
     val number:String,

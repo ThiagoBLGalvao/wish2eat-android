@@ -1,6 +1,7 @@
 package com.example.wish2eat.common.core.vo
 
 import android.os.Parcelable
+import com.example.wish2eat.common.core.enum.StoreType
 import com.example.wish2eat.common.core.model.ProductModel
 import com.example.wish2eat.common.core.model.StoreModel
 import com.example.wish2eat.common.core.model.UserModel
@@ -55,6 +56,7 @@ data class ListOfStoresVO(
 data class StoreVO(
     val id: Long,
     val name: String,
+    val storeType: Int,
     val cep: String,
     val number: String,
     val productsList: List<ProductVO>
@@ -62,6 +64,7 @@ data class StoreVO(
 
 fun StoreVO.toModel() = StoreModel(
     id,
+    StoreType.from(storeType),
     name,
     cep,
     number,

@@ -20,10 +20,9 @@ class RegisterPresenter(
                 .doOnNext {
                     view?.showToast(R.string.user_created)
                 }
+                .doOnError { error:Throwable -> view?.showToast(error.toString()) }
                 .doOnTerminate{ view?.hideLoader() }
                 .subscribe().also { disposable.addAll(it) }
-
-            view?.showToast(R.string.user_created)
         } catch (e: UserAlreadyExistException) {
             view?.showToast(R.string.user_already_exist)
         } catch (e: InvalidAccountFields) {

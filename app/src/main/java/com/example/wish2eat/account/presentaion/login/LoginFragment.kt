@@ -19,9 +19,9 @@ class LoginFragment: BaseFragment(), LoginContract.View {
 
     override val layoutResource = R.layout.fragment_login
 
-    fun getEmail() = emailLoginInput?.text.toString()
+    private fun getEmail() = emailLoginInput?.text.toString()
 
-    fun getPassword() = passwordLoginInput?.text.toString()
+    private fun getPassword() = passwordLoginInput?.text.toString()
 
     override fun initFragment(rootView: View) {
         buttonLoginFragment?.setOnClickListener { presenter.onLoginPressed(getEmail(), getPassword()) }
@@ -32,12 +32,13 @@ class LoginFragment: BaseFragment(), LoginContract.View {
     override fun openRegisterFragment() {
         val fragment = RegisterFragment.newInstance()
 
-        activity?.supportFragmentManager
-            ?.beginTransaction()
-            ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            ?.replace(R.id.container_fragment, fragment)
-            ?.addToBackStack("fragment_register")
-            ?.commit()
+        targetingManager.replace(fragment, RegisterFragment.NAME)
+
+//        activity?.supportFragmentManager
+//            ?.beginTransaction()
+//            ?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+//            ?.replace(R.id.container_fragment, fragment)
+//            ?.commit()
     }
 
     override fun openDashboard() {}
