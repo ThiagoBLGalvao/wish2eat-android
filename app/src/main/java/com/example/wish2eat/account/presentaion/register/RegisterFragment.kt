@@ -3,10 +3,8 @@ package com.example.wish2eat.account.presentaion.register
 import android.view.View
 import android.widget.Toast
 import com.example.wish2eat.R
-import com.example.wish2eat.common.core.model.UserModel
 import com.example.wish2eat.common.BaseFragment
 import com.example.wish2eat.common.core.vo.UserVO
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -25,9 +23,10 @@ class RegisterFragment : BaseFragment(), RegisterContract.View {
     override fun onResume() {
         super.onResume()
         buttonCreateAccountCard?.setOnClickListener {
-            presenter.onRegisterAccountButtonClicked(
-                createUser()
-            )
+            if (nameInputCard.text.isNullOrBlank() || emailInputCard.text.isNullOrBlank() || passwordInputCard.text.isNullOrBlank())
+                showToast(getString(R.string.not_empty_field))
+            else
+                presenter.onRegisterAccountButtonClicked(createUser())
         }
     }
 

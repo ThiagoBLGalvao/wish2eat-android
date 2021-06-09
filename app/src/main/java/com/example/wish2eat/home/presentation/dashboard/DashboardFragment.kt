@@ -2,19 +2,80 @@ package com.example.wish2eat.home.presentation.dashboard
 
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wish2eat.R
 import com.example.wish2eat.common.BaseFragment
+import com.example.wish2eat.common.core.model.ProductModel
+import com.example.wish2eat.common.core.model.StoreModel
+import com.example.wish2eat.common.core.model.UserModel
+import com.example.wish2eat.home.presentation.dashboard.adapter.StoreListAdapter
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class DashboardFragment : BaseFragment(), DashboardContract.View {
     override val layoutResource: Int = R.layout.fragment_dashboard
+    private val presenter: DashboardContract.Presenter by inject { parametersOf(this) }
+
+    companion object{
+        const val USER_MODEL = "user_model"
+
+        fun newInstance(userModel: UserModel) = DashboardFragment().apply {
+            arguments = bundleOf(
+                USER_MODEL to userModel
+            )
+        }
+    }
 
     override fun initFragment(rootView: View) {
-
+        presenter.init(getUser())
     }
 
     override fun init() {
-        TODO("Not yet implemented")
+        rclStoreList.layoutManager = LinearLayoutManager(requireContext())
+
+        bindButton()
+        hideBasicToolbarBackButton()
+    }
+
+    override fun openProductList(favProductsList: List<ProductModel>) {
+        showToast("${favProductsList[1]}")
+    }
+
+    override fun openAddNewProductFlow() {
+        showToast("Opening...")
+    }
+
+    override fun bindList(favStores: List<StoreModel>) {
+        val storeAdapter = StoreListAdapter(favStores){ presenter.onCardClicked(it) }
+
+        rclStoreList?.adapter = storeAdapter
+    }
+
+    override fun bindButton() {
+        customBottomButton?.apply {
+            bindText(getString(R.string.add_product))
+            bindImage(R.drawable.ic_plus)
+            setOnClickListener { presenter.onButtonClicked() }
+        }
+    }
+
+    override fun showCard() {
+        emptyListCard?.visibility = View.VISIBLE
+    }
+
+    override fun hideCard() {
+        emptyListCard?.visibility = View.GONE
+    }
+
+    override fun showList() {
+        rclStoreList?.visibility = View.VISIBLE
+    }
+
+    override fun hideList() {
+        rclStoreList?.visibility = View.GONE
     }
 
     override fun showToast(messageId: Int) {
@@ -32,4 +93,6 @@ class DashboardFragment : BaseFragment(), DashboardContract.View {
     override fun hideLoader() {
         basicLoader.changeVisibility(false)
     }
+
+    private fun getUser() = arguments?.getParcelable<UserModel>(USER_MODEL)!!
 }

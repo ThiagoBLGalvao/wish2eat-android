@@ -11,6 +11,7 @@
         android:layout_width="@dimen/straight_12"
         android:layout_height="match_parent"
         android:src="@drawable/ic_left_arrow"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

@@ -19,4 +19,7 @@
     <string name="account_not_exist">This Account doesn\'t exist</string>
     <string name="add_new_store">Add new Store</string>
     <string name="loading">Loading…</string>
+    <string name="not_empty_field">Neither camp must be empty!</string>
+    <string name="empty_list">Your list is empty</string>
+    <string name="add_product">Add product</string>
 </resources>

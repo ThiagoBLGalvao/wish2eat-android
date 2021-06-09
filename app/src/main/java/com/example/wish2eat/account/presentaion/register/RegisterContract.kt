@@ -1,6 +1,5 @@
 package com.example.wish2eat.account.presentaion.register
 
-import com.example.wish2eat.common.core.model.UserModel
 import com.example.wish2eat.common.core.vo.UserVO
 import com.example.wish2eat.common.core.webApi.NetworkPresenterUtils
 

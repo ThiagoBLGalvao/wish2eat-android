@@ -2,6 +2,7 @@ package com.example.wish2eat
 
 import android.app.Application
 import com.example.wish2eat.account.AccountModules
+import com.example.wish2eat.home.HomeModules
 import com.example.wish2eat.splashScreen.SplashModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -14,7 +15,7 @@ class App : Application() {
         startKoin {
             androidContext(this@App)
 
-            modules(listOf(AccountModules.instance, SplashModules.instance))
+            modules(listOf(AccountModules.instance, SplashModules.instance,HomeModules.instance))
         }
     }
 

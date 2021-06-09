@@ -5,5 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class StandardError(
+    val status: Int,
+    val error: String,
     val message: String
 ):Parcelable

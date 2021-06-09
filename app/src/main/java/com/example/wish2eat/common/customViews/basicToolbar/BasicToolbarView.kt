@@ -7,13 +7,10 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageButton
 import com.example.wish2eat.R
+import kotlinx.android.synthetic.main.basic_toolbar.view.*
 
 class BasicToolbarView : FrameLayout {
     private val layoutResourceId = R.layout.basic_toolbar
-
-    private val backButton by lazy { findViewById<ImageButton>(R.id.backButton) }
-
-    private val accountButton by lazy { findViewById<ImageButton>(R.id.accountButton) }
 
     constructor(context: Context) : super(context) {
         init()
@@ -37,16 +34,16 @@ class BasicToolbarView : FrameLayout {
     }
 
     fun setBackButtonBehavior(onClickListener: OnClickListener?){
-        backButton.setOnClickListener(onClickListener)
+        backButton?.setOnClickListener(onClickListener)
     }
 
     fun setAccountButtonBehavior(onClickListener: OnClickListener?){
-        accountButton.setOnClickListener(onClickListener)
+        accountButton?.setOnClickListener(onClickListener)
     }
 
     fun changeBackButtonVisibility(visibility: Boolean){
         if(visibility)
-            backButton.visibility = View.VISIBLE
-        else backButton.visibility = View.GONE
+            backButton?.visibility = View.VISIBLE
+        else backButton?.visibility = View.GONE
     }
 }

@@ -61,6 +61,13 @@ abstract class BaseFragment: Fragment(), NavigationDialog {
         basicToolbarComponent.setAccountButtonBehavior { openAccountDialog() }
     }
 
+    protected fun showBasicToolbarBackButton(){
+        basicToolbarComponent.changeVisibilityBackButton(true)
+    }
+    protected fun hideBasicToolbarBackButton(){
+        basicToolbarComponent.changeVisibilityBackButton(false)
+    }
+
     private fun openAccountDialog(){
         DialogUserMenu.newInstance(this@BaseFragment).show(baseActivity.supportFragmentManager, "DialogAccountNavigationMenu")
     }

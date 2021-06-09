@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.recycler_view_list_item.view.*
 
 class StoreListAdapter(
     private val storeList: List<StoreModel>,
-    val clickListener: (storeId: Long) -> Unit
+    private val listener: (storeId: Long) -> Unit
 ) :
     RecyclerView.Adapter<StoreListAdapter.StoreListHolder>() {
 
@@ -24,7 +24,7 @@ class StoreListAdapter(
     override fun onBindViewHolder(holder: StoreListHolder, position: Int) {
         val item = storeList[position]
 
-        holder.bind(item, clickListener)
+        holder.bind(item, listener)
     }
 
     override fun getItemCount() = storeList.size
@@ -34,7 +34,7 @@ class StoreListAdapter(
             itemView.apply {
                 cardItemImageLogo.setImageResource(item.storeType.storeIcon)
                 itemListText.text = item.name
-                cardItem.setOnClickListener { clickListener(item.id) }
+                cardItem.setOnClickListener { clickListener.invoke(item.id) }
             }
         }
     }

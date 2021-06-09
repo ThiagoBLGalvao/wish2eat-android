@@ -6,9 +6,11 @@ import com.example.wish2eat.common.core.vo.UserVO
 import io.reactivex.Observable
 
 interface WebRepositoryContract {
-    fun getUser(id: String): Observable<UserModel>
+    fun getUser(id: Long): Observable<UserModel>
 
     fun createUser(vo: UserVO): Observable<UserVO>
 
     fun login(vo: LoginModel): Observable<UserModel>
+
+    fun update(id: Long, vo: UserVO): Observable<UserModel>
 }

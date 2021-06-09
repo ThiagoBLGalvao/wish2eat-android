@@ -7,7 +7,7 @@ import com.example.wish2eat.common.core.vo.toModel
 import io.reactivex.Observable
 
 class WebRepository(private val wish2EatApi: Wish2EatApi) : WebRepositoryContract {
-    override fun getUser(id: String): Observable<UserModel> {
+    override fun getUser(id: Long): Observable<UserModel> {
         return wish2EatApi
                 .getUser(id)
                 .map { it.toModel() }
@@ -22,5 +22,11 @@ class WebRepository(private val wish2EatApi: Wish2EatApi) : WebRepositoryContrac
         return wish2EatApi
                 .loginUser(vo)
                 .map { it.toModel() }
+    }
+
+    override fun update(id: Long, vo: UserVO): Observable<UserModel> {
+        return wish2EatApi
+            .updateUser(id, vo)
+            .map{ it.toModel() }
     }
 }
