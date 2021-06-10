@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/storeNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/straight_7"
+        android:textColor="@color/black"
+        android:textSize="@dimen/straight_string_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Tikinho Lanches" />
+
+    <View
+        android:id="@+id/viewDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/straight_7"
+        android:layout_marginTop="@dimen/straight_6"
+        android:layout_marginEnd="@dimen/straight_7"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/storeNameLabel" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/storeTypeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/straight_7"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewDivider"
+        tools:text="Hamburger Shop" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/productsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/straight_7"
+        android:text="@string/products"
+        android:textColor="@color/black"
+        android:textSize="@dimen/straight_string_1"
+        app:layout_constraintTop_toBottomOf="@+id/storeTypeLabel"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rclStoreProductsList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/straight_5"
+        android:layout_marginTop="@dimen/straight_15"
+        android:layout_marginEnd="@dimen/straight_5"
+        android:layout_marginBottom="@dimen/straight_5"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/productsLabel" />
+</androidx.constraintlayout.widget.ConstraintLayout>
