@@ -6,8 +6,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class LoginModel(
+    @SerializedName("email")
+    val username: String,
     @SerializedName("password")
-    val password: String,
-    @SerializedName("username")
-    val username: String
+    val password: String
 ):Parcelable

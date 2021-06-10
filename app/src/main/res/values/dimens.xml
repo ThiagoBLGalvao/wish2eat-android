@@ -13,6 +13,8 @@
     <dimen name="straight_11">120dp</dimen>
     <dimen name="straight_12">56dp</dimen>
     <dimen name="straight_13">60dp</dimen>
+    <dimen name="straight_14">160dp</dimen>
+    <dimen name="straight_15">170dp</dimen>
     <dimen name="image_straight_1">150dp</dimen>
     <dimen name="image_straight_2">200dp</dimen>
     <dimen name="straight_string_1">20sp</dimen>

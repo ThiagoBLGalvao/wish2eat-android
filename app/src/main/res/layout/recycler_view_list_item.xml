@@ -4,9 +4,12 @@
     android:id="@+id/cardItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/straight_7"
+    android:layout_marginStart="@dimen/straight_6"
+    android:layout_marginEnd="@dimen/straight_6"
     android:background="@drawable/item_list_background_shape"
-    app:cardElevation="@dimen/straight_8"
-    android:elevation="@dimen/straight_8"
+    app:cardElevation="@dimen/straight_5"
+    android:elevation="@dimen/straight_5"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout

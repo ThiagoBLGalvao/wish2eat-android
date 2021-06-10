@@ -9,8 +9,8 @@ import com.example.wish2eat.common.BaseFragment
 import com.example.wish2eat.common.core.model.ProductModel
 import com.example.wish2eat.common.core.model.StoreModel
 import com.example.wish2eat.common.core.model.UserModel
-import com.example.wish2eat.home.presentation.dashboard.adapter.StoreListAdapter
-import kotlinx.android.synthetic.main.activity_home.*
+import com.example.wish2eat.common.adapter.StoreListAdapter
+import com.example.wish2eat.home.presentation.searchStore.SearchStoreFragment
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -34,7 +34,7 @@ class DashboardFragment : BaseFragment(), DashboardContract.View {
     }
 
     override fun init() {
-        rclStoreList.layoutManager = LinearLayoutManager(requireContext())
+        rclFavStoreList.layoutManager = LinearLayoutManager(requireContext())
 
         bindButton()
         hideBasicToolbarBackButton()
@@ -45,13 +45,15 @@ class DashboardFragment : BaseFragment(), DashboardContract.View {
     }
 
     override fun openAddNewProductFlow() {
-        showToast("Opening...")
+        val fragment = SearchStoreFragment.newInstance()
+
+        targetingManager.replace(fragment, "search_store_list")
     }
 
     override fun bindList(favStores: List<StoreModel>) {
         val storeAdapter = StoreListAdapter(favStores){ presenter.onCardClicked(it) }
 
-        rclStoreList?.adapter = storeAdapter
+        rclFavStoreList?.adapter = storeAdapter
     }
 
     override fun bindButton() {
@@ -71,11 +73,11 @@ class DashboardFragment : BaseFragment(), DashboardContract.View {
     }
 
     override fun showList() {
-        rclStoreList?.visibility = View.VISIBLE
+        rclFavStoreList?.visibility = View.VISIBLE
     }
 
     override fun hideList() {
-        rclStoreList?.visibility = View.GONE
+        rclFavStoreList?.visibility = View.GONE
     }
 
     override fun showToast(messageId: Int) {

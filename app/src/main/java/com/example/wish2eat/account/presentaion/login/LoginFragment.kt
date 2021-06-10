@@ -52,4 +52,12 @@ class LoginFragment: BaseFragment(), LoginContract.View {
     override fun showToast(message: String){
         Toast.makeText(requireContext(), message,Toast.LENGTH_SHORT).show()
     }
+
+    override fun showLoader() {
+        basicLoader.changeVisibility(true)
+    }
+
+    override fun hideLoader() {
+        basicLoader.changeVisibility(false)
+    }
 }

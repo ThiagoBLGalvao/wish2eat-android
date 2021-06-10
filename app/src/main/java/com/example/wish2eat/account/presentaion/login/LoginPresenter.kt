@@ -11,9 +11,9 @@ class  LoginPresenter(
 ) : LoginContract.Presenter {
 
     override fun onLoginPressed(email: String, password: String) {
-         request(repository.login(LoginModel(password, email)), callback = { text -> view?.showToast(text) })
-             .doOnNext {
-                 view?.openDashboard(it) }
+
+         request(repository.login(LoginModel(email, password)), callback = { text -> view?.showToast(text) })
+             .doOnNext { view?.openDashboard(it) }
              .subscribe({},{}).also { dispose.addAll(it) }
     }
 

@@ -1,6 +1,7 @@
 package com.example.wish2eat.common.core.webApi
 
 import com.example.wish2eat.common.core.model.LoginModel
+import com.example.wish2eat.common.core.model.StoreModel
 import com.example.wish2eat.common.core.model.UserModel
 import com.example.wish2eat.common.core.vo.UserVO
 import com.example.wish2eat.common.core.vo.toModel
@@ -28,5 +29,15 @@ class WebRepository(private val wish2EatApi: Wish2EatApi) : WebRepositoryContrac
         return wish2EatApi
             .updateUser(id, vo)
             .map{ it.toModel() }
+    }
+
+    override fun getAllStores(): Observable<List<StoreModel>> {
+        return wish2EatApi
+            .getAllStores()
+            .map {
+                it.map { model ->
+                    model.toModel()
+                }
+            }
     }
 }

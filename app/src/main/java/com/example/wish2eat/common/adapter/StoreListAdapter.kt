@@ -1,4 +1,4 @@
-package com.example.wish2eat.home.presentation.dashboard.adapter
+package com.example.wish2eat.common.adapter
 
 import android.view.LayoutInflater
 import android.view.View

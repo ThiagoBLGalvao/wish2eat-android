@@ -22,4 +22,8 @@
     <string name="not_empty_field">Neither camp must be empty!</string>
     <string name="empty_list">Your list is empty</string>
     <string name="add_product">Add product</string>
+    <string name="search">Search</string>
+    <string name="stores">Stores</string>
+    <string name="products">Products</string>
+    <string name="monetary_symbol">R$</string>
 </resources>

@@ -22,7 +22,7 @@ data class StoreModel(
     val name: String,
     val cep: String,
     val number:String,
-    val productsList: List<ProductModel>
+    val productsList: List<ProductModel>? = null
 ): Parcelable
 
 @Parcelize

@@ -58,7 +58,14 @@ abstract class BaseFragment: Fragment(), NavigationDialog {
     }
 
     private fun implementationToolbar(){
-        basicToolbarComponent.setAccountButtonBehavior { openAccountDialog() }
+        basicToolbarComponent.apply {
+            setAccountButtonBehavior { openAccountDialog() }
+            setBackButtonBehavior {  }
+        }
+    }
+
+    fun turnBackFlow(){
+        baseActivity.onBackPressed()
     }
 
     protected fun showBasicToolbarBackButton(){

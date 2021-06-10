@@ -14,6 +14,10 @@ interface LoginContract {
         fun showToast(messageId: Int)
 
         fun showToast(message: String)
+
+        fun showLoader()
+
+        fun hideLoader()
     }
 
     interface Presenter: NetworkPresenterUtils{

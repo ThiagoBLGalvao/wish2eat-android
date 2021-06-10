@@ -56,10 +56,11 @@ data class ListOfStoresVO(
 data class StoreVO(
     val id: Long,
     val name: String,
+    @SerializedName("type")
     val storeType: Int,
     val cep: String,
     val number: String,
-    val productsList: List<ProductVO>
+    val productsList: List<ProductVO>?
 ) : Parcelable
 
 fun StoreVO.toModel() = StoreModel(
@@ -68,5 +69,5 @@ fun StoreVO.toModel() = StoreModel(
     name,
     cep,
     number,
-    productsList = productsList.map { productVO -> productVO.toModel() }
+    productsList = productsList?.map { it.toModel() }
 )

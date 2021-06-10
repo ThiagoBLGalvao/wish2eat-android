@@ -1,10 +1,8 @@
 package com.example.wish2eat.common.core.webApi
 
 import com.example.wish2eat.common.core.model.LoginModel
-import com.example.wish2eat.common.core.vo.FavoriteProduct
-import com.example.wish2eat.common.core.vo.FavoriteStore
-import com.example.wish2eat.common.core.vo.ListOfStoresVO
-import com.example.wish2eat.common.core.vo.UserVO
+import com.example.wish2eat.common.core.model.StoreModel
+import com.example.wish2eat.common.core.vo.*
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -19,7 +17,7 @@ interface Wish2EatApi {
     fun updateUser(@Path("id") id: Long, @Body vo: UserVO): Observable<UserVO>
 
     @GET("store")
-    fun getAllStores(): Observable<ListOfStoresVO>
+    fun getAllStores(): Observable<Array<StoreVO>>
 
     @POST("users")
     fun createUser(@Body userVO: UserVO): Observable<UserVO>
