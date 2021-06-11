@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/favProductCardItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/straight_7"
+    android:layout_marginStart="@dimen/straight_6"
+    android:layout_marginEnd="@dimen/straight_6"
+    android:background="@drawable/item_list_background_shape"
+    app:cardElevation="@dimen/straight_5"
+    android:elevation="@dimen/straight_5"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/favProductNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="@dimen/straight_string_1"
+            android:textColor="@color/black"
+            android:layout_margin="@dimen/straight_5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Item Title"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/favProductPriceSymbolLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/monetary_symbol"
+            android:textStyle="bold"
+            android:textColor="@color/red_primary"
+            android:textSize="@dimen/straight_string_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/favProductPrice" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/favProductPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/straight_3"
+            android:textStyle="bold"
+            android:textColor="@color/red_primary"
+            android:textSize="@dimen/straight_string_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="15.50"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

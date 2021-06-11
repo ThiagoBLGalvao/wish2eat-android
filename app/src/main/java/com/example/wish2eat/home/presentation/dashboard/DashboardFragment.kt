@@ -10,6 +10,8 @@ import com.example.wish2eat.common.core.model.ProductModel
 import com.example.wish2eat.common.core.model.StoreModel
 import com.example.wish2eat.common.core.model.UserModel
 import com.example.wish2eat.common.adapter.StoreListAdapter
+import com.example.wish2eat.common.core.model.ListOfProduct
+import com.example.wish2eat.home.presentation.favProductsList.FavoritesProductsListFragment
 import com.example.wish2eat.home.presentation.searchStore.SearchStoreFragment
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import org.koin.android.ext.android.inject
@@ -46,7 +48,9 @@ class DashboardFragment : BaseFragment(), DashboardContract.View {
     }
 
     override fun openProductList(favProductsList: List<ProductModel>) {
-        showToast("${favProductsList[1]}")
+        val fragment = FavoritesProductsListFragment.newInstance(ListOfProduct(favProductsList))
+
+        targetingManager.replace(fragment, "fragment_favorite_products_list")
     }
 
     override fun openAddNewProductFlow() {

@@ -24,6 +24,11 @@ class StoreDetailsPresenter(
     override fun init(userModel: UserModel, storeModel: StoreModel) {
         store = storeModel
 
+        view?.apply {
+            bindStoreTitle(store.name)
+            bindStoreType(store.storeType)
+        }
+
         request(repository.getUser(userModel.id)) { view?.showToast(it) }
             .doOnNext {
                 user = it

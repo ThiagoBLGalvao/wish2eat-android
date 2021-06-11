@@ -29,7 +29,7 @@ data class StoreModel(
 data class ProductModel(
     val id: Long,
     val name: String,
-    val storeId: Long,
+    val storeID: Long,
     val description: String,
     val value: Double
 ):Parcelable

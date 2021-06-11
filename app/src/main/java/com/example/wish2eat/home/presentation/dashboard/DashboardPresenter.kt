@@ -29,7 +29,7 @@ class DashboardPresenter(
     }
 
     override fun onCardClicked(storeId: Long) {
-        userModel?.favoriteFoods?.filter { it.storeId == storeId }?.also { view?.openProductList(it) }
+        userModel?.favoriteFoods?.filter { it.storeID == storeId }?.also { view?.openProductList(it) }
     }
 
     override fun onButtonClicked() {

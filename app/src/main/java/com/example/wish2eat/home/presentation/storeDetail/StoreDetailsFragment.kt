@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wish2eat.R
 import com.example.wish2eat.common.BaseFragment
 import com.example.wish2eat.common.adapter.StoreProductsAdapter
+import com.example.wish2eat.common.core.enum.StoreType
 import com.example.wish2eat.common.core.model.ProductModel
 import com.example.wish2eat.common.core.model.StoreModel
 import com.example.wish2eat.common.core.model.UserModel
@@ -43,6 +44,14 @@ class StoreDetailsFragment : BaseFragment(), StoreDetailsContract.View {
                     productModel, view
                 )
             }
+    }
+
+    override fun bindStoreTitle(storeTitle: String) {
+        storeNameLabel?.text = storeTitle
+    }
+
+    override fun bindStoreType(storeType: StoreType) {
+        storeTypeLabel?.text = storeType.nameType
     }
 
     override fun hideList() {

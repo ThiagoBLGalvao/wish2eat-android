@@ -23,7 +23,10 @@ class AccountActivity : BaseActivity()  {
     private fun loginCallback(entity: UserModel){
         val i = Intent(this, HomeActivity::class.java)
 
-        i.putExtra(HomeActivity.USER_LOGGED, entity)
+        i.apply {
+            putExtra(HomeActivity.USER_LOGGED, entity)
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        }
 
         startActivity(i)
         finish()

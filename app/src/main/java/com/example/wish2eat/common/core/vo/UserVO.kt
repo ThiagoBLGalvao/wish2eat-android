@@ -34,7 +34,7 @@ data class ProductVO(
     val id: Long,
     val description: String,
     val name: String,
-    val storeId: Long,
+    val storeID: Long,
     @SerializedName("value")
     val productValue: Double
 ) : Parcelable
@@ -42,7 +42,7 @@ data class ProductVO(
 fun ProductVO.toModel() = ProductModel(
     id,
     name,
-    storeId,
+    storeID,
     description,
     productValue
 )
