@@ -11,8 +11,8 @@ data class UserModel(
     val email: String,
     val password: String = "",
     val profilePhoto: Long = 0L,
-    val favoriteFoods: List<ProductModel>? = null,
-    val favoriteRestaurant: List<StoreModel>? = null
+    val favoriteFoods: MutableList<ProductModel>? = null,
+    val favoriteRestaurant: MutableList<StoreModel>? = null
 ):Parcelable
 
 @Parcelize
@@ -31,5 +31,5 @@ data class ProductModel(
     val name: String,
     val storeId: Long,
     val description: String,
-    val value: Long
+    val value: Double
 ):Parcelable

@@ -3,6 +3,8 @@ package com.example.wish2eat.common.core.webApi
 import com.example.wish2eat.common.core.model.LoginModel
 import com.example.wish2eat.common.core.model.StoreModel
 import com.example.wish2eat.common.core.model.UserModel
+import com.example.wish2eat.common.core.vo.FavoriteProduct
+import com.example.wish2eat.common.core.vo.FavoriteStore
 import com.example.wish2eat.common.core.vo.UserVO
 import com.example.wish2eat.common.core.vo.toModel
 import io.reactivex.Observable
@@ -35,9 +37,13 @@ class WebRepository(private val wish2EatApi: Wish2EatApi) : WebRepositoryContrac
         return wish2EatApi
             .getAllStores()
             .map {
-                it.map { model ->
-                    model.toModel()
+                it.map { vo ->
+                    vo.toModel()
                 }
             }
     }
+
+    override fun createFavStore(favoriteStore: FavoriteStore) = wish2EatApi.createFavoriteStore(favoriteStore)
+
+    override fun createFavProduct(favoriteProduct: FavoriteProduct) = wish2EatApi.createFavorite(favoriteProduct)
 }

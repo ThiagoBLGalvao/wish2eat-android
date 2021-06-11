@@ -12,16 +12,20 @@ class DashboardPresenter(
     var userModel: UserModel? = null
 
     override fun init(model: UserModel) {
-        userModel = model
+        request(repository.getUser(model.id)){ view?.showToast(it) }
+            .doOnNext {
+                userModel = it
+
+                if(userModel?.favoriteRestaurant.isNullOrEmpty())
+                    view?.showCard()
+                else{
+                    userModel?.favoriteRestaurant?.let{ view?.bindList(it) }
+                    view?.showList()
+                }
+            }
+            .subscribe({},{}).also { dispose.addAll(it) }
 
         view?.init()
-
-        if(userModel?.favoriteRestaurant.isNullOrEmpty())
-            view?.showCard()
-        else{
-            userModel?.favoriteRestaurant?.let{ view?.bindList(it) }
-            view?.showList()
-        }
     }
 
     override fun onCardClicked(storeId: Long) {

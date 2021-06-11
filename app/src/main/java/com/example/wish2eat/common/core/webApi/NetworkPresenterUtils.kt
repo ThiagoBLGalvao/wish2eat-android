@@ -1,5 +1,6 @@
 package com.example.wish2eat.common.core.webApi
 
+import android.util.Log
 import com.example.wish2eat.R
 import com.example.wish2eat.common.core.model.exception.ErrorValidations
 import com.example.wish2eat.common.core.model.exception.StandardError
@@ -25,6 +26,7 @@ interface NetworkPresenterUtils {
 
                     handleError(apiError, callback)
                 } else {
+                    print(error.toString())
                     callback.invoke(error.toString())
                 }
             }

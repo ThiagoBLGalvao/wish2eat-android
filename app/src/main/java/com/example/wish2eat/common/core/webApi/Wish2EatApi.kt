@@ -26,5 +26,5 @@ interface Wish2EatApi {
     fun createFavorite(@Body favoriteProduct: FavoriteProduct): Observable<String>
 
     @POST("favStore")
-    fun createFavoriteStore(@Body favoriteStore: FavoriteStore)
+    fun createFavoriteStore(@Body favoriteStore: FavoriteStore): Observable<String>
 }

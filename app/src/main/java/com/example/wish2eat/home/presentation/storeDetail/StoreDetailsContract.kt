@@ -1,11 +1,13 @@
 package com.example.wish2eat.home.presentation.storeDetail
 
 import com.example.wish2eat.common.core.model.ProductModel
+import com.example.wish2eat.common.core.model.StoreModel
+import com.example.wish2eat.common.core.model.UserModel
 import com.example.wish2eat.common.core.webApi.NetworkPresenterUtils
 
 interface StoreDetailsContract {
     interface View{
-        fun bindList(productList: List<ProductModel>)
+        fun bindList(productList: List<ProductModel>, userModel: UserModel)
 
         fun hideList()
 
@@ -17,8 +19,8 @@ interface StoreDetailsContract {
     }
 
     interface Presenter: NetworkPresenterUtils{
-        fun init()
+        fun init(userModel: UserModel, storeModel: StoreModel)
 
-        fun onFavClicked(model: ProductModel)
+        fun onFavClicked(model: ProductModel, itemView: android.view.View)
     }
 }

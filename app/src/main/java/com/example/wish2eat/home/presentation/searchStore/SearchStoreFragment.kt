@@ -7,6 +7,7 @@ import com.example.wish2eat.R
 import com.example.wish2eat.common.BaseFragment
 import com.example.wish2eat.common.adapter.StoreListAdapter
 import com.example.wish2eat.common.core.model.StoreModel
+import com.example.wish2eat.home.presentation.storeDetail.StoreDetailsFragment
 import kotlinx.android.synthetic.main.fragment_search_store.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -26,7 +27,9 @@ class SearchStoreFragment: BaseFragment(), SearchStoreContract.View {
     }
 
     override fun openStoreDetails(storeModel: StoreModel) {
-        showToast(storeModel.name)
+        val fragment = StoreDetailsFragment.newInstance(storeModel)
+
+        targetingManager.replace(fragment,"store_details_fragment")
     }
 
     override fun mountList(list: List<StoreModel>) {

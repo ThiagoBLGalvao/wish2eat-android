@@ -15,18 +15,18 @@ data class UserVO(
     val name: String,
     val email: String,
     val password: String? = "",
-    @SerializedName("addProducts")
-    val favoriteProductsList: List<ProductVO>? = listOf(),
+    @SerializedName("addedProducts")
+    val favoriteProductsList: MutableList<ProductVO>? = mutableListOf(),
     @SerializedName("addStores")
-    val favoriteStoreList: List<StoreVO>? = listOf()
+    val favoriteStoreList: MutableList<StoreVO>? = mutableListOf()
 ) : Parcelable
 
 fun UserVO.toModel() = UserModel(
     id,
     name,
     email,
-    favoriteFoods = favoriteProductsList?.map { productVO -> productVO.toModel() },
-    favoriteRestaurant = favoriteStoreList?.map { storeVo -> storeVo.toModel() }
+    favoriteFoods = favoriteProductsList?.map { productVO -> productVO.toModel() } as MutableList<ProductModel>?,
+    favoriteRestaurant = favoriteStoreList?.map { storeVo -> storeVo.toModel() } as MutableList<StoreModel>?
 )
 
 @Parcelize
@@ -36,7 +36,7 @@ data class ProductVO(
     val name: String,
     val storeId: Long,
     @SerializedName("value")
-    val productValue: Long
+    val productValue: Double
 ) : Parcelable
 
 fun ProductVO.toModel() = ProductModel(
@@ -48,11 +48,6 @@ fun ProductVO.toModel() = ProductModel(
 )
 
 @Parcelize
-data class ListOfStoresVO(
-    val listStores: List<StoreVO>
-): Parcelable
-
-@Parcelize
 data class StoreVO(
     val id: Long,
     val name: String,
@@ -60,8 +55,38 @@ data class StoreVO(
     val storeType: Int,
     val cep: String,
     val number: String,
-    val productsList: List<ProductVO>?
-) : Parcelable
+    @SerializedName("products")
+    val productsList: Array<ProductVO>?
+) : Parcelable {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as StoreVO
+
+        if (id != other.id) return false
+        if (name != other.name) return false
+        if (storeType != other.storeType) return false
+        if (cep != other.cep) return false
+        if (number != other.number) return false
+        if (productsList != null) {
+            if (other.productsList == null) return false
+            if (!productsList.contentEquals(other.productsList)) return false
+        } else if (other.productsList != null) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = id.hashCode()
+        result = 31 * result + name.hashCode()
+        result = 31 * result + storeType
+        result = 31 * result + cep.hashCode()
+        result = 31 * result + number.hashCode()
+        result = 31 * result + (productsList?.contentHashCode() ?: 0)
+        return result
+    }
+}
 
 fun StoreVO.toModel() = StoreModel(
     id,

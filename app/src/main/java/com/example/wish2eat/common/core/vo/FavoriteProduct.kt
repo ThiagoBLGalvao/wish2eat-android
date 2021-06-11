@@ -1,11 +1,17 @@
 package com.example.wish2eat.common.core.vo
 
+import com.google.gson.annotations.SerializedName
+
 data class FavoriteProduct(
-    val userId: Long,
-    val productId: Long
+    @SerializedName("product")
+    val productId: Long,
+    @SerializedName("user")
+    val userId: Long
 )
 
 data class FavoriteStore(
-    val userId: Long,
-    val storeId: Long
+    @SerializedName("store")
+    val storeId: Long,
+    @SerializedName("user")
+    val userId: Long
 )

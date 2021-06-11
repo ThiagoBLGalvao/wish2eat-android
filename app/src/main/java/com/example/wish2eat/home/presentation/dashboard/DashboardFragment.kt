@@ -29,6 +29,11 @@ class DashboardFragment : BaseFragment(), DashboardContract.View {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.init(getUser())
+    }
+
     override fun initFragment(rootView: View) {
         presenter.init(getUser())
     }

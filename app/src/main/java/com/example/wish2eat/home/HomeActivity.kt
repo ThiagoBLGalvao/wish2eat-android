@@ -23,5 +23,5 @@ class HomeActivity: BaseActivity() {
         targetingManager.replace(fragment, "dashboard_fragment")
     }
 
-    private fun getEntity() = intent.getParcelableExtra<UserModel>(USER_LOGGED)!!
+    fun getEntity() = intent.getParcelableExtra<UserModel>(USER_LOGGED)!!
 }
