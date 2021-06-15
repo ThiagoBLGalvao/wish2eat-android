@@ -2,6 +2,7 @@ package com.example.wish2eat.common.core.model
 
 import android.os.Parcelable
 import com.example.wish2eat.common.core.enum.StoreType
+import com.example.wish2eat.common.core.vo.UserVO
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -14,6 +15,8 @@ data class UserModel(
     val favoriteFoods: MutableList<ProductModel>? = null,
     val favoriteRestaurant: MutableList<StoreModel>? = null
 ):Parcelable
+
+fun UserModel.toVO() = UserVO(name = name, email = email, password = password)
 
 @Parcelize
 data class StoreModel(

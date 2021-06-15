@@ -1,23 +1,24 @@
 package com.example.wish2eat.home.presentation.account
 
 import com.example.wish2eat.common.core.model.UserModel
+import com.example.wish2eat.common.core.webApi.NetworkPresenterUtils
 
 interface ProfileContract {
     interface View{
         fun bind(user: UserModel)
 
-        fun changeButtonText()
-
-        fun changeInputVisibility()
-
         fun showToast(messageId: Int)
+
+        fun showToast(message: String)
+
+        fun showLoader()
+
+        fun hideLoader()
     }
 
-    interface Presenter{
-        fun init(email: String)
+    interface Presenter: NetworkPresenterUtils{
+        fun init(id: Long)
 
-        fun onEditButtonClicked()
-
-        fun updateAccount(user: UserModel)
+        fun onEditButtonClicked(userModel: UserModel)
     }
 }

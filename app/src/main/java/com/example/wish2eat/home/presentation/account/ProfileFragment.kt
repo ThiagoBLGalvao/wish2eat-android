@@ -17,55 +17,58 @@ class ProfileFragment: BaseFragment(), ProfileContract.View{
     private val presenter: ProfileContract.Presenter by inject { parametersOf(this) }
 
     companion object{
-        const val USER_EMAIL = "user_email"
+        const val USER_ID = "user_id"
 
-        fun newInstance(email: String) = ProfileFragment().apply {
+        fun newInstance(id: Long) = ProfileFragment().apply {
             arguments = Bundle().apply{
-                putString(USER_EMAIL, email)
+                putLong(USER_ID, id)
             }
         }
     }
 
-    private fun getEmail() = arguments?.getString(USER_EMAIL).orEmpty()
+    private fun getUserId() = arguments?.getLong(USER_ID)!!
 
     override fun initFragment(rootView: View) {
-        presenter.init(getEmail())
+        presenter.init(getUserId())
 
-        accountEditButton?.setOnClickListener { presenter.onEditButtonClicked() }
+        accountEditButton?.setOnClickListener {
+            if(!verifyFields())
+                presenter.onEditButtonClicked(getUser())
+            else showToast(getString(R.string.not_empty))
+        }
     }
 
     override fun bind(user: UserModel) {
         user.apply {
             accountNameInput?.setText(name)
             accountEmailInput?.setText(email)
-
-            if(profilePhoto != 0L)
-                changeProfilePhoto(profilePhoto)
         }
-    }
-
-    override fun changeButtonText() {
-
-    }
-
-    override fun changeInputVisibility() {
     }
 
     override fun showToast(messageId: Int) {
         showToast(getString(messageId))
     }
 
-    private fun showToast(message: String){
+    override fun showToast(message: String){
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun changeProfilePhoto(profilePhoto: Long){
-
+    override fun showLoader() {
+        basicLoader.changeVisibility(true)
     }
 
-    private fun verifyChanges(user: UserModel): Boolean {
-        return user.run {
-            email != accountEmailInput.text.toString() || name != accountNameInput?.text.toString()
-        }
+    override fun hideLoader() {
+        basicLoader.changeVisibility(false)
     }
+
+    private fun verifyFields():  Boolean{
+        return accountEmailInput.text.isNullOrBlank() || accountNameInput.text.isNullOrBlank() ||accountPasswordInput.text.isNullOrBlank()
+    }
+
+    private fun getUser() =
+        UserModel(
+            name = accountNameInput.text.toString(),
+            email = accountEmailInput.text.toString(),
+            password = accountPasswordInput.text.toString()
+        )
 }

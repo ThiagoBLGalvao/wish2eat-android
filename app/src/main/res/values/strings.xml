@@ -26,4 +26,9 @@
     <string name="stores">Stores</string>
     <string name="products">Products</string>
     <string name="monetary_symbol">R$</string>
+    <string name="e_mail">E-mail</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="not_empty">All Fields must not be empty</string>
+    <string name="updated_account">Your account was updated</string>
 </resources>

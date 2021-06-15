@@ -35,14 +35,14 @@
         android:layout_marginTop="@dimen/straight_7"
         android:layout_marginStart="@dimen/straight_7"
         android:layout_marginEnd="@dimen/straight_7"
+        android:text="@string/name"
         android:textColor="@color/white"
         android:textSize="@dimen/straight_string_3"
         android:enabled="false"
         android:backgroundTint="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/dividerLine"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Name"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/accountEmailInput"
@@ -51,14 +51,31 @@
         android:layout_marginTop="@dimen/straight_6"
         android:layout_marginStart="@dimen/straight_7"
         android:layout_marginEnd="@dimen/straight_7"
+        android:text="@string/e_mail"
         android:textColor="@color/white"
         android:textSize="@dimen/straight_string_3"
         android:enabled="false"
         android:backgroundTint="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/accountNameInput"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Email"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/accountPasswordInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/straight_6"
+        android:layout_marginStart="@dimen/straight_7"
+        android:layout_marginEnd="@dimen/straight_7"
+        android:text="@string/password"
+        android:inputType="textPassword"
+        android:textColor="@color/white"
+        android:textSize="@dimen/straight_string_3"
+        android:enabled="false"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/accountEmailInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/accountEditButton"
