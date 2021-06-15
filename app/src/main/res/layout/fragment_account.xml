@@ -10,11 +10,11 @@
         android:id="@+id/accountProfilePhoto"
         android:layout_width="@dimen/image_straight_2"
         android:layout_height="@dimen/image_straight_2"
+        android:src = "@drawable/ic_logo"
         android:layout_marginTop="@dimen/straight_10"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:src = "@drawable/ic_logo"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <View
         android:id="@+id/dividerLine"

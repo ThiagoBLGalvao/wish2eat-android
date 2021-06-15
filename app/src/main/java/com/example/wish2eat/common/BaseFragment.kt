@@ -9,6 +9,9 @@ import com.example.wish2eat.common.core.targeting.TargetingManager
 import com.example.wish2eat.common.customViews.basicToolbar.BasicToolbarComponentContract
 import com.example.wish2eat.common.customViews.dialogUserMenu.DialogUserMenu
 import com.example.wish2eat.common.customViews.loader.LoaderContract
+import com.example.wish2eat.home.HomeActivity
+import com.example.wish2eat.home.presentation.account.ProfileFragment
+import com.example.wish2eat.home.presentation.dashboard.DashboardFragment
 
 abstract class BaseFragment: Fragment(), NavigationDialog {
     protected abstract val layoutResource: Int
@@ -50,21 +53,29 @@ abstract class BaseFragment: Fragment(), NavigationDialog {
     }
 
     override fun toAccount() {
-//        val fragment =
+        if (baseActivity is HomeActivity){
+            val fragment = ProfileFragment.newInstance((baseActivity as HomeActivity).getEntity().id)
+
+            targetingManager.replace(fragment, "profile_fragment")
+        }
     }
 
     override fun toMyFavoriteList() {
-//        TODO("Not yet implemented")
+        if (baseActivity is HomeActivity){
+            val fragment = DashboardFragment.newInstance((baseActivity as HomeActivity).getEntity())
+
+            targetingManager.replace(fragment, "dashboard_fragment")
+        }
     }
 
     private fun implementationToolbar(){
         basicToolbarComponent.apply {
             setAccountButtonBehavior { openAccountDialog() }
-            setBackButtonBehavior {  }
+            setBackButtonBehavior { turnBackFlow() }
         }
     }
 
-    fun turnBackFlow(){
+    private fun turnBackFlow(){
         baseActivity.onBackPressed()
     }
 
@@ -76,6 +87,10 @@ abstract class BaseFragment: Fragment(), NavigationDialog {
     }
 
     private fun openAccountDialog(){
-        DialogUserMenu.newInstance(this@BaseFragment).show(baseActivity.supportFragmentManager, "DialogAccountNavigationMenu")
+        DialogUserMenu.newInstance().apply {
+            setListener(this@BaseFragment)
+
+            show(baseActivity.supportFragmentManager, "DialogAccountNavigationMenu")
+        }
     }
 }
