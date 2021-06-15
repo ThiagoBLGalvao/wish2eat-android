@@ -12,6 +12,7 @@ import com.example.wish2eat.common.customViews.loader.LoaderContract
 import com.example.wish2eat.home.HomeActivity
 import com.example.wish2eat.home.presentation.account.ProfileFragment
 import com.example.wish2eat.home.presentation.dashboard.DashboardFragment
+import kotlin.system.exitProcess
 
 abstract class BaseFragment: Fragment(), NavigationDialog {
     protected abstract val layoutResource: Int
@@ -66,6 +67,11 @@ abstract class BaseFragment: Fragment(), NavigationDialog {
 
             targetingManager.replace(fragment, "dashboard_fragment")
         }
+    }
+
+    override fun logout() {
+        baseActivity.finishAndRemoveTask()
+        exitProcess(0)
     }
 
     private fun implementationToolbar(){

@@ -37,6 +37,8 @@ class DialogUserMenu : DialogFragment() {
             listener.toMyFavoriteList()
             this.dismiss()
         }
+
+        logoutButton.setOnClickListener { listener.logout() }
     }
 
     override fun onStart() {

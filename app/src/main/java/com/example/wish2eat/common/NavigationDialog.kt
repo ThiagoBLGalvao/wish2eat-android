@@ -4,6 +4,8 @@ interface NavigationDialog {
     fun toAccount()
 
     fun toMyFavoriteList()
+
+    fun logout()
 }
 
 interface DialogProfilePhotoManagement{
