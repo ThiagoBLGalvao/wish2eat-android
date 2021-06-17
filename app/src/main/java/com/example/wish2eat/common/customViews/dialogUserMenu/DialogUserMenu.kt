@@ -6,12 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import com.example.wish2eat.R
 import com.example.wish2eat.common.NavigationDialog
+import com.example.wish2eat.home.presentation.account.ProfileFragment
+import com.example.wish2eat.home.presentation.dashboard.DashboardFragment
 import kotlinx.android.synthetic.main.dialog_account_fragment.*
 
 class DialogUserMenu : DialogFragment() {
     private lateinit var listener: NavigationDialog
+    private lateinit var fragmentThis: Fragment
 
     companion object {
         fun newInstance() = DialogUserMenu()
@@ -38,6 +42,16 @@ class DialogUserMenu : DialogFragment() {
             this.dismiss()
         }
 
+
+        if(fragmentThis is DashboardFragment)
+            hideMyFavoriteListButton()
+        else
+            showMyFavoriteListButton()
+
+        if (fragmentThis is ProfileFragment)
+            hideAccountButton()
+        else showAccountButton()
+
         logoutButton.setOnClickListener { listener.logout() }
     }
 
@@ -47,6 +61,22 @@ class DialogUserMenu : DialogFragment() {
         val width = (resources.displayMetrics.widthPixels * 0.8).toInt()
 
         dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
+    fun showMyFavoriteListButton(){
+    }
+    fun hideMyFavoriteListButton(){
+        myFavoriteListButton.visibility = View.GONE
+    }
+    fun showAccountButton(){
+        myAccountButton.visibility = View.VISIBLE
+    }
+    fun hideAccountButton(){
+        myAccountButton.visibility = View.GONE
+    }
+
+    fun setFragment(fragment: Fragment){
+        fragmentThis = fragment
     }
 
     fun setListener(listenerNavigation: NavigationDialog){

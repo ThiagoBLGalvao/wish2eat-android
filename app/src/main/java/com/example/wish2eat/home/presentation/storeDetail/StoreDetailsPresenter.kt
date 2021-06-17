@@ -47,31 +47,49 @@ class StoreDetailsPresenter(
         if (!verifyStoreInUser(user, store)) {
             updateUser(store)
 
-            request(repository.createFavStore(FavoriteStore(store.id, user.id))) { view?.showToast(it) }
+            request(repository.createFavStore(FavoriteStore(store.id, user.id))) {
+                view?.showToast(
+                    it
+                )
+            }
                 .subscribe({}, {}).also { dispose.addAll(it) }
         }
-
         if (!verifyProductInUser(user, model)) {
-
             updateUser(newProduct = model)
-
-            request(repository.createFavProduct(FavoriteProduct(model.id, user.id))) { view?.showToast(it) }
-                .doOnNext {
-                    view?.showToast(it)
-                }
-                .doOnTerminate { itemView.favProductButton.setImageResource(R.drawable.ic_favorite_full) }
-                .subscribe({}, {}).also { dispose.addAll(it) }
+            requestProduct(model, itemView, R.drawable.ic_favorite_full)
+        } else {
+            removeProductFromUser(model)
+            requestProduct(model, itemView, R.drawable.ic_favorite_empty)
         }
     }
 
-    private fun updateUser(newStore: StoreModel? = null, newProduct: ProductModel? = null){
-        newStore?.let{ user.favoriteRestaurant?.add(it) }
+    private fun updateUser(newStore: StoreModel? = null, newProduct: ProductModel? = null) {
+        newStore?.let { user.favoriteRestaurant?.add(it) }
         newProduct?.let { user.favoriteFoods?.add(it) }
+    }
+
+    private fun removeProductFromUser(productModel: ProductModel) {
+        user.favoriteFoods?.remove(productModel)
     }
 
     private fun verifyProductInUser(userModel: UserModel, productModel: ProductModel) =
         userModel.favoriteFoods?.contains(productModel) == true
 
-    private fun verifyStoreInUser(userModel: UserModel, storeModel: StoreModel) =
-        userModel.favoriteRestaurant?.contains(storeModel) == true
+    private fun verifyStoreInUser(userModel: UserModel, storeModel: StoreModel): Boolean {
+        userModel.favoriteRestaurant?.map {
+            if (it.id == storeModel.id)
+                return true
+        }
+        return false
+    }
+
+    private fun requestProduct(model: ProductModel, itemView: View, drawable: Int) {
+        request(repository.createFavProduct(FavoriteProduct(model.id, user.id))) {
+            view?.showToast(
+                it
+            )
+        }
+            .doOnTerminate { itemView.favProductButton.setImageResource(drawable) }
+            .subscribe({}, {}).also { dispose.addAll(it) }
+    }
 }

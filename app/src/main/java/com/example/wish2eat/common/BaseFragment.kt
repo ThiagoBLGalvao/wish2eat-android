@@ -14,7 +14,7 @@ import com.example.wish2eat.home.presentation.account.ProfileFragment
 import com.example.wish2eat.home.presentation.dashboard.DashboardFragment
 import kotlin.system.exitProcess
 
-abstract class BaseFragment: Fragment(), NavigationDialog {
+abstract class BaseFragment : Fragment(), NavigationDialog {
     protected abstract val layoutResource: Int
 
     private val baseActivity: BaseActivity
@@ -46,23 +46,24 @@ abstract class BaseFragment: Fragment(), NavigationDialog {
     ): View? {
         val layoutResourceId = layoutResource
 
-        return if(layoutResourceId == 0){
+        return if (layoutResourceId == 0) {
             super.onCreateView(inflater, container, savedInstanceState)
-        } else{
+        } else {
             inflater.inflate(layoutResourceId, container, false)
         }
     }
 
     override fun toAccount() {
-        if (baseActivity is HomeActivity){
-            val fragment = ProfileFragment.newInstance((baseActivity as HomeActivity).getEntity().id)
+        if (baseActivity is HomeActivity) {
+            val fragment =
+                ProfileFragment.newInstance((baseActivity as HomeActivity).getEntity().id)
 
             targetingManager.replace(fragment, "profile_fragment")
         }
     }
 
     override fun toMyFavoriteList() {
-        if (baseActivity is HomeActivity){
+        if (baseActivity is HomeActivity) {
             val fragment = DashboardFragment.newInstance((baseActivity as HomeActivity).getEntity())
 
             targetingManager.replace(fragment, "dashboard_fragment")
@@ -74,27 +75,30 @@ abstract class BaseFragment: Fragment(), NavigationDialog {
         exitProcess(0)
     }
 
-    private fun implementationToolbar(){
+    private fun implementationToolbar() {
         basicToolbarComponent.apply {
             setAccountButtonBehavior { openAccountDialog() }
             setBackButtonBehavior { turnBackFlow() }
         }
     }
 
-    private fun turnBackFlow(){
+    private fun turnBackFlow() {
         baseActivity.onBackPressed()
     }
 
-    protected fun showBasicToolbarBackButton(){
+    protected fun showBasicToolbarBackButton() {
         basicToolbarComponent.changeVisibilityBackButton(true)
     }
-    protected fun hideBasicToolbarBackButton(){
+
+    protected fun hideBasicToolbarBackButton() {
         basicToolbarComponent.changeVisibilityBackButton(false)
     }
 
-    private fun openAccountDialog(){
+    private fun openAccountDialog() {
         DialogUserMenu.newInstance().apply {
             setListener(this@BaseFragment)
+
+            setFragment(this@BaseFragment)
 
             show(baseActivity.supportFragmentManager, "DialogAccountNavigationMenu")
         }

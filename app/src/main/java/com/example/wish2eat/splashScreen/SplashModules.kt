@@ -8,7 +8,8 @@ import org.koin.dsl.module
 
 object SplashModules {
     val localApi = "http://10.0.2.2:8080/"
-    val api = "https://wish2eat-dev.herokuapp.com/"
+    val dev = "https://wish2eat-dev.herokuapp.com/"
+    val api = "https://wish2eat.herokuapp.com/"
 
     val instance = module {
         single<WebRepositoryContract> {
