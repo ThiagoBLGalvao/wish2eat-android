@@ -29,4 +29,5 @@
     <string name="not_empty">All Fields must not be empty</string>
     <string name="updated_account">Your account was updated</string>
     <string name="description">Description:</string>
+    <string name="share">Share</string>
 </resources>

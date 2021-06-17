@@ -43,6 +43,12 @@ class WebRepository(private val wish2EatApi: Wish2EatApi) : WebRepositoryContrac
             }
     }
 
+    override fun getStore(id: Long): Observable<StoreModel> {
+        return wish2EatApi
+            .getStore(id)
+            .map { it.toModel() }
+    }
+
     override fun createFavStore(favoriteStore: FavoriteStore) = wish2EatApi.createFavoriteStore(favoriteStore)
 
     override fun createFavProduct(favoriteProduct: FavoriteProduct) = wish2EatApi.createFavorite(favoriteProduct)

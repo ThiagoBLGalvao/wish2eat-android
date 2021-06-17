@@ -19,6 +19,9 @@ interface Wish2EatApi {
     @GET("store")
     fun getAllStores(): Observable<Array<StoreVO>>
 
+    @GET("store/{id}")
+    fun getStore(@Path("id") id: Long): Observable<StoreVO>
+
     @POST("users")
     fun createUser(@Body userVO: UserVO): Observable<UserVO>
 
