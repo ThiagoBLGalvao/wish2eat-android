@@ -4,6 +4,8 @@ import com.example.wish2eat.home.presentation.account.ProfileContract
 import com.example.wish2eat.home.presentation.account.ProfilePresenter
 import com.example.wish2eat.home.presentation.dashboard.DashboardContract
 import com.example.wish2eat.home.presentation.dashboard.DashboardPresenter
+import com.example.wish2eat.home.presentation.productDetail.ProductDetailsContract
+import com.example.wish2eat.home.presentation.productDetail.ProductsDetailsPresenter
 import com.example.wish2eat.home.presentation.searchStore.SearchStoreContract
 import com.example.wish2eat.home.presentation.searchStore.SearchStorePresenter
 import com.example.wish2eat.home.presentation.storeDetail.StoreDetailsContract
@@ -19,5 +21,7 @@ object HomeModules {
         factory<SearchStoreContract.Presenter> { (view: SearchStoreContract.View) -> SearchStorePresenter(view = view, repository = get()) }
 
         factory<StoreDetailsContract.Presenter> { (view: StoreDetailsContract.View) -> StoreDetailsPresenter(view = view, repository = get()) }
+
+        factory<ProductDetailsContract.Presenter> { (view: ProductDetailsContract.View) -> ProductsDetailsPresenter(view = view, repository = get()) }
     }
 }
