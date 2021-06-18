@@ -8,7 +8,10 @@ import com.example.wish2eat.R
 import com.example.wish2eat.common.core.model.ProductModel
 import kotlinx.android.synthetic.main.recycler_view_favorite_products_list.view.*
 
-class FavoriteProductsListAdapter(val favProductsList: List<ProductModel>): RecyclerView.Adapter<FavoriteProductsListAdapter.FavoriteProductsListHolder>() {
+class FavoriteProductsListAdapter(
+    private val favProductsList: List<ProductModel>,
+    private val listener: (productModel: ProductModel) -> Unit
+) : RecyclerView.Adapter<FavoriteProductsListAdapter.FavoriteProductsListHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteProductsListHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.recycler_view_favorite_products_list, parent, false)
@@ -19,16 +22,17 @@ class FavoriteProductsListAdapter(val favProductsList: List<ProductModel>): Recy
     override fun onBindViewHolder(holder: FavoriteProductsListHolder, position: Int) {
         val element = favProductsList[position]
 
-        holder.bind(element)
+        holder.bind(element,listener)
     }
 
     override fun getItemCount() = favProductsList.size
 
-    class FavoriteProductsListHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bind(productModel: ProductModel){
+    class FavoriteProductsListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(productModel: ProductModel, listener: (productModel: ProductModel) -> Unit) {
             itemView.apply {
                 favProductNameLabel.text = productModel.name
-                favProductPrice.text = productModel.value.toString()
+                favProductPrice.text = String.format("%.2f", productModel.value)
+                favProductCardItem.setOnClickListener { listener.invoke(productModel) }
             }
         }
     }

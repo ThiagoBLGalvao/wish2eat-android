@@ -25,12 +25,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="X-Tudasso"/>
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/favImageIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/straight_4"
-        android:layout_marginEnd="@dimen/straight_7"
+        android:layout_marginEnd="@dimen/straight_6"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:src="@drawable/ic_favorite_empty"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productBanner"/>
@@ -39,7 +40,7 @@
         android:id="@+id/cardStoreProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/straight_5"
+        android:layout_marginTop="@dimen/straight_8"
         android:layout_marginStart="@dimen/straight_8"
         android:layout_marginEnd="@dimen/straight_8"
         android:elevation="@dimen/straight_5"
@@ -47,6 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/productTitleName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">

@@ -2,6 +2,7 @@ package com.example.wish2eat.home.presentation.productDetail
 
 import com.example.wish2eat.common.core.model.ProductModel
 import com.example.wish2eat.common.core.model.StoreModel
+import com.example.wish2eat.common.core.model.UserModel
 import com.example.wish2eat.common.core.webApi.NetworkPresenterUtils
 
 interface ProductDetailsContract {
@@ -9,6 +10,8 @@ interface ProductDetailsContract {
         fun bindProductDetails(productModel: ProductModel)
 
         fun bindStoreCard(storeModel: StoreModel)
+
+        fun changeFavIcon(had: Boolean)
 
         fun showToast(messageInt: Int)
 
@@ -20,6 +23,8 @@ interface ProductDetailsContract {
     }
 
     interface Presenter: NetworkPresenterUtils{
-        fun init(productModel: ProductModel)
+        fun init(productModel: ProductModel, userModel: UserModel)
+
+        fun onFavButtonClicked()
     }
 }

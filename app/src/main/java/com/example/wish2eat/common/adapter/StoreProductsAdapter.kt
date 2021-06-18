@@ -12,7 +12,8 @@ import kotlinx.android.synthetic.main.recycler_view_list_products.view.*
 class StoreProductsAdapter(
     private val productList: List<ProductModel>,
     private val userModel: UserModel,
-    val listener: (model: ProductModel, itemView:View) -> Unit
+    private val listenerOpenProductsDetails: (productModel: ProductModel) -> Unit,
+    private val listener: (model: ProductModel, itemView: View) -> Unit
 ) : RecyclerView.Adapter<StoreProductsAdapter.StoreProductsHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoreProductsHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -24,7 +25,7 @@ class StoreProductsAdapter(
     override fun onBindViewHolder(holder: StoreProductsHolder, position: Int) {
         val model = productList[position]
 
-        holder.bind(model, userModel, listener)
+        holder.bind(model, userModel, listenerOpenProductsDetails, listener)
     }
 
     override fun getItemCount() = productList.size
@@ -32,12 +33,13 @@ class StoreProductsAdapter(
     class StoreProductsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(
             model: ProductModel, userModel: UserModel,
-            listener: (model: ProductModel, itemView:View) -> Unit
+            listenerOpenProductsDetails: (productModel: ProductModel) -> Unit,
+            listener: (model: ProductModel, itemView: View) -> Unit
         ) {
             itemView.apply {
                 productNameLabel?.text = model.name
 
-                productPriceLabel.text = model.value.toString()
+                productPriceLabel.text = String.format("%.2f",  model.value)
 
                 favProductButton?.apply {
 
@@ -46,9 +48,9 @@ class StoreProductsAdapter(
                             R.drawable.ic_favorite_full
                         )
                     }
-
                     setOnClickListener { listener.invoke(model, itemView) }
                 }
+                cardItem?.setOnClickListener { listenerOpenProductsDetails.invoke(model) }
             }
         }
     }

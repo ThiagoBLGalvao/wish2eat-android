@@ -7,6 +7,7 @@ import com.example.wish2eat.R
 import com.example.wish2eat.common.BaseFragment
 import com.example.wish2eat.common.core.model.ProductModel
 import com.example.wish2eat.common.core.model.StoreModel
+import com.example.wish2eat.home.HomeActivity
 import kotlinx.android.synthetic.main.fragment_products_details.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -31,7 +32,9 @@ class ProductDetailsFragment: BaseFragment(),ProductDetailsContract.View {
     override fun initFragment(rootView: View) {
         bindButton()
 
-        presenter.init(getProduct())
+        bindFavButton()
+
+        presenter.init(getProduct(), getEntity())
     }
 
     private fun bindButton(){
@@ -50,6 +53,12 @@ class ProductDetailsFragment: BaseFragment(),ProductDetailsContract.View {
         cardStoreName.text = storeModel.name
     }
 
+    override fun changeFavIcon(had: Boolean) {
+        if(had){
+            favImageIcon.setImageResource(R.drawable.ic_favorite_full)
+        }else { favImageIcon.setImageResource(R.drawable.ic_favorite_empty) }
+    }
+
     override fun showToast(messageId: Int) {
         showToast(getString(messageId))
     }
@@ -65,4 +74,10 @@ class ProductDetailsFragment: BaseFragment(),ProductDetailsContract.View {
     override fun hideLoader() {
         basicLoader.changeVisibility(false)
     }
+
+    private fun bindFavButton(){
+        favImageIcon.setOnClickListener { presenter.onFavButtonClicked() }
+    }
+
+    private fun getEntity() = (activity as HomeActivity).getEntity()
 }
