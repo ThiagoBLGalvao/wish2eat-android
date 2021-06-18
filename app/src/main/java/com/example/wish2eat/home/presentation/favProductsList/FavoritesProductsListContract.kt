@@ -5,7 +5,9 @@ import com.example.wish2eat.common.core.webApi.NetworkPresenterUtils
 
 interface FavoritesProductsListContract {
     interface View {
-        fun bindList(list: MutableList<ProductModel>? = null)
+        fun bindList()
+
+        fun updateList(list: MutableList<ProductModel>?)
 
         fun showToast(messageInt: Int)
 

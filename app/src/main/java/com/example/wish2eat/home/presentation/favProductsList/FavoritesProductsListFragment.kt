@@ -15,12 +15,12 @@ import kotlinx.android.synthetic.main.fragment_favorites_products_list.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-class FavoritesProductsListFragment: BaseFragment(), FavoritesProductsListContract.View {
+class FavoritesProductsListFragment : BaseFragment(), FavoritesProductsListContract.View {
     override val layoutResource: Int = R.layout.fragment_favorites_products_list
 
-    private val presenter: FavoritesProductsListContract.Presenter by inject{ parametersOf(this) }
+    private val presenter: FavoritesProductsListContract.Presenter by inject { parametersOf(this) }
 
-    companion object{
+    companion object {
         const val FAV_PROD_LIST = "fav_list_prod"
 
         fun newInstance(listFavProduct: ListOfProduct) = FavoritesProductsListFragment().apply {
@@ -40,19 +40,25 @@ class FavoritesProductsListFragment: BaseFragment(), FavoritesProductsListContra
         presenter.updateList(getEntity().id)
     }
 
-    private fun openProductsDetails(productModel: ProductModel){
+    private fun openProductsDetails(productModel: ProductModel) {
         val fragment = ProductDetailsFragment.newInstance(productModel)
 
         targetingManager.replace(fragment, "product_details_fragment")
     }
 
-    override fun bindList(list: MutableList<ProductModel>?) {
-        if(list.isNullOrEmpty()){
-            rclFavoriteProductList.adapter = FavoriteProductsListAdapter(getList().productLis){
+    override fun bindList() {
+        rclFavoriteProductList.adapter = FavoriteProductsListAdapter(getList().productLis) {
+            openProductsDetails(it)
+        }
+    }
+
+    override fun updateList(list: MutableList<ProductModel>?) {
+        if (list.isNullOrEmpty()){
+            rclFavoriteProductList.adapter = FavoriteProductsListAdapter(listOf()) {
                 openProductsDetails(it)
             }
         }else{
-            rclFavoriteProductList.adapter = FavoriteProductsListAdapter(list){
+            rclFavoriteProductList.adapter = FavoriteProductsListAdapter(list) {
                 openProductsDetails(it)
             }
         }

@@ -12,7 +12,7 @@ class FavoritesProductsListPresenter(
         view.showLoader()
         request( repository.getUser(userId) ){ view.showToast(it) }
             .subscribe(
-                { it.favoriteFoods?.let { view.bindList(it) } },
+                { it.favoriteFoods?.let { view.updateList(it) } },
                 {},
                 { view.hideLoader() }
             ).also { disposable.addAll(it) }
